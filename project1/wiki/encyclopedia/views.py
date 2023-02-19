@@ -9,13 +9,13 @@ import pysnooper
 
 from . import util
 
-@pysnooper.snoop()
+
 def index(request):
     return render(request, "encyclopedia/index.html", {
         "entries": util.list_entries()
     })
 
-@pysnooper.snoop()
+
 def page_search(request, page_name):
     page = util.get_entry(page_name)
     if page:
@@ -27,7 +27,6 @@ def page_search(request, page_name):
         return render(request, "encyclopedia/file_not_found.html")
 
 
-@pysnooper.snoop()
 def search(request):
     if request.method == "POST":
         query = request.POST["q"]
@@ -48,7 +47,6 @@ def search(request):
             return render(request, "encyclopedia/file_not_found.html")
 
 
-@pysnooper.snoop()
 def random_page(request):
     docs = util.list_entries()
     selected = random.choice(docs)
@@ -63,7 +61,7 @@ class ArticleForm(forms.Form):
 class EditForm(forms.Form):
     text = forms.CharField(widget=forms.Textarea, label="content")
 
-@pysnooper.snoop()
+
 def new_page(request):
     if request.method == "POST":
         form = ArticleForm(request.POST)
@@ -81,7 +79,6 @@ def new_page(request):
         return render(request, "encyclopedia/new_page.html", {"form": ArticleForm()})
 
 
-@pysnooper.snoop()
 def edit_page(request, name):
     if request.method == "POST":
         form = EditForm(request.POST)
