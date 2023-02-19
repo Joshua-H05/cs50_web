@@ -9,17 +9,20 @@ import pysnooper
 
 from . import util
 
-
+@pysnooper.snoop()
 def index(request):
     return render(request, "encyclopedia/index.html", {
         "entries": util.list_entries()
     })
 
-
+@pysnooper.snoop()
 def page_search(request, page_name):
     page = util.get_entry(page_name)
     if page:
-        return render(request, "encyclopedia/page.html", {"page": page})
+        return render(request, "encyclopedia/page.html",
+                      {"page": page,
+                       "page_name": page_name,
+                       })
     else:
         return render(request, "encyclopedia/file_not_found.html")
 
@@ -40,7 +43,7 @@ def search(request):
             for ref in possible_refs:
                 ref_dict[ref] = str(f'wiki/{ref}')
             return render(request, "encyclopedia/search.html", {"ref_dict": ref_dict
-                                                   })
+                                                                })
         else:
             return render(request, "encyclopedia/file_not_found.html")
 
@@ -57,6 +60,10 @@ class ArticleForm(forms.Form):
     text = forms.CharField(widget=forms.Textarea, label="content")
 
 
+class EditForm(forms.Form):
+    text = forms.CharField(widget=forms.Textarea, label="content")
+
+@pysnooper.snoop()
 def new_page(request):
     if request.method == "POST":
         form = ArticleForm(request.POST)
@@ -74,5 +81,21 @@ def new_page(request):
         return render(request, "encyclopedia/new_page.html", {"form": ArticleForm()})
 
 
+@pysnooper.snoop()
 def edit_page(request, name):
-    return render(request, "encyclopedia/edit.html")
+    if request.method == "POST":
+        form = EditForm(request.POST)
+        if form.is_valid():
+            text = form.cleaned_data["text"]
+            if util.get_entry(name):
+                with open(f"entries/{name}.md", "w") as f:
+                    f.write(text)
+                return redirect('wiki', page_name=name)
+    else:
+        text = util.get_entry(name)
+        info = {
+            "text": text
+        }
+        old_doc = EditForm(info)
+        return render(request, "encyclopedia/edit.html", {"name": name,
+                                                          "form": old_doc})

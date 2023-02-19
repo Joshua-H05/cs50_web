@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+{% extends "encyclopedia/layout.html" %}
+
+{%block title%}
     <meta charset="UTF-8">
     <title>Search results:</title>
-</head>
-<body>
+{%endblock%}
+{%block body%}
   <p>{% load md2 %} {{ page|markdown }}</p>
-  <a href="{% url 'edit',  %}"> Edit this page</a>
+  <a href="{% url 'edit' name=page_name %}"> Edit this page </a>
 
-</body>
-</html>
+{%endblock%}
+

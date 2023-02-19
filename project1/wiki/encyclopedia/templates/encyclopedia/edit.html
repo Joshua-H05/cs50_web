@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Exit this page</title>
-</head>
-<body>
+{% extends "encyclopedia/layout.html" %}
 
-</body>
-</html>
+{% block title %}
+    Editing Page
+{% endblock %}
+
+{% block body %}
+    <h1>Editing page</h1>
+    <h4>Article name: {{ name }}</h4>
+     <form action="edit" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit", value="Submit">
+    </form>
+
+{% endblock %}
