@@ -1,0 +1,14 @@
+{% extends 'encyclopedia/layout.html' %}
+
+{% block title %}
+    Search
+{% endblock title %}
+
+{% block body %}
+    <h1>Were you looking for these?</h1>
+        <ul>
+        {% for ref, x in ref_dict.items %}
+            <li><a href="{{ x }}">{{ ref }}</a> </li>
+        {% endfor %}
+        </ul>
+{% endblock body %}
