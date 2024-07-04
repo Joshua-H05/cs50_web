@@ -1,11 +1,36 @@
 <!DOCTYPE html>
-<head>
-    <title>Image Search</title>
-    <link rel="stylesheet" href="styles.css">
+<html lang="en">
+    <head>
+        <title>Search</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="nav_link">
+                <a href="index.html">Google Search</a>
+        </div>
 
-</head>
-<body>
-    <div class="nav_link">
-        <a href="index.html">Google</a>
-    </div>
-</body>
+        <div id="container_large">
+            <div id="container_medium">
+                <img id="logo" src="assets/googlelogo_imgs.png" alt="google logo">
+            </div>
+        </div>
+
+        <div id="searchbar_container">
+            <form action="https://www.google.com/search">
+                <div>
+                    <div id="searchbar_wrap">
+                        <input id="searchbar" type="text" name="q">
+                        <input name="udm" value="2" hidden="">
+
+                    </div>
+                    <center>
+                        <input type="submit" value="Google Image Search">
+                    </center>
+                </div>
+
+            </form>
+        </div>
+
+    </body>
+</html>
+
