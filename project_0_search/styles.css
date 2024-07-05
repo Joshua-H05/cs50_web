@@ -40,14 +40,14 @@ input[type="submit"]{
     background-color: ghostwhite;
     border: 1px solid ghostwhite;
     color: DimGrey;
-    font-size: 14px;
+    font-size: 15px;
     border-radius: 5px;
 }
 
 input[type="text"]{
     text-align: left;
     border: 1px solid #d9d9d9;
-    font-size: 13px;
+    font-size: 12px;
     height: 25px;
     padding: 1px 8px;
     width: 100%;
