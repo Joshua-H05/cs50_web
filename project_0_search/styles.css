@@ -2,7 +2,6 @@ body{
     font-family: arial, sans-serif;
     text-align: left;
 
-
 }
 
 .nav_link {
@@ -11,17 +10,7 @@ body{
 }
 
 #logo{
-    object-fit: contain;
-    object-position: center bottom;
-    height: 92px;
-}
-
-#searchbar{
-    border: 1px solid gray;
-    border-radius: 25px;
-    margin: 10pt;
-    width: 600px;
-    height: 45px;
+    height: 90px;
 }
 
 input[type="submit"]{
@@ -29,6 +18,12 @@ input[type="submit"]{
     border: 1px solid ghostwhite;
     color: DimGrey;
     font-size: 15px;
+}
+
+#searchbar{
+    margin: 10pt;
+    width: 600px;
+    height: 45px;
 }
 
 input[type="text"]{
