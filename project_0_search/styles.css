@@ -15,19 +15,6 @@ body{
     height: 92px;
 }
 
-#searchbar_container{
-    padding: 20px;
-    max-height: 160px;
-}
-
-#searchbar_wrap{
-    margin: 0 auto;
-    width: auto;
-    max-width: 584px;
-    padding-top: 6px;
-    position: relative;
-}
-
 #searchbar{
     border: 1px solid gray;
     border-radius: 25px;
@@ -57,7 +44,6 @@ input[type="text"]{
     color: gray;
     font-size: 11px;
 }
-
 
 .instructions{
     font-size: 12px;
